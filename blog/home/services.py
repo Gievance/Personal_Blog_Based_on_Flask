@@ -57,6 +57,7 @@ def get_homepage_payload():
             "image": "d18699f07c874b2726825ec8267c52e7.jpg",
         },
     ]
+    author_info = None
     try:
         author_info = User.query.filter_by(username="woson").first()
     except Exception:
