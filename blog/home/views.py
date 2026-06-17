@@ -18,8 +18,11 @@ def post_detail(pid):
     if not post:
         abort(404,description=f"文章 {pid} 不存在")
 
-    post.view_count += 1
-    db.session.commit()
+    try:
+        post.view_count += 1
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
 
     site_info = SiteConfig.query.first()
     page_title = f"{post.title} - {site_info.site_name if site_info else 'WNBlog'}"
@@ -59,7 +62,7 @@ def create_post():
         db.session.add(post)
         db.session.commit()
         flash('文章创建成功。', 'success')
-        return redirect(url_for('home.post_detail', slug=post.slug))
+        return redirect(url_for('home.post_detail', pid=post.id))
 
     return render_template('post_form.html', categories=categories, page_title='新建文章')
 

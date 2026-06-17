@@ -1,6 +1,18 @@
+import os
+from urllib.parse import quote_plus
+
 DEBUG = False
-SECRET_KEY = "abcdefg"
-SQLALCHEMY_DATABASE_URI = "sqlite:///blog.db"
+SECRET_KEY = os.getenv("FLASK_SECRET_KEY", "abcdefg")
+
+
+
+MYSQL_USERNAME_ENCODED = quote_plus(MYSQL_USERNAME)
+MYSQL_PASSWORD_ENCODED = quote_plus(MYSQL_PASSWORD)
+
+SQLALCHEMY_DATABASE_URI = os.getenv(
+    "DATABASE_URL",
+    f"mysql+pymysql://{MYSQL_USERNAME_ENCODED}:{MYSQL_PASSWORD_ENCODED}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}?charset=utf8mb4"
+)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SITE_NAME = "WNBlog"
 POSTS_PER_PAGE = 10
