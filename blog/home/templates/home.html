@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block head_title %}{{ site_info['header_text'] }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('home.static', filename='css/home.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<section class="hero">
+    <div class="hero-grid">
+        <div>
+            <div class="mini-meta">{{ hero.meta|join(' / ') }}</div>
+            <h1 class="hero-title">{{ hero.title|replace('博客首页', '<br>博客首页')|safe }}</h1>
+            <p>{{ hero.subtitle }}</p>
+            <div class="hero-actions">
+                <a class="btn primary" href="#articles">进入文章区</a>
+                <a class="btn" href="{{url_for('home.about')}}"> 关于本站 </a>
+            </div>
+        </div>
+        <aside class="hero-card">
+            <h3>博客核心信息</h3>
+            <div class="mini-meta">
+                <span>更新频率：每周</span>
+                <span>风格：动漫 / 科技</span>
+                <span>状态：双主题在线</span>
+            </div>
+            <div class="stats">
+                <div class="stat"><strong>{{ stats.posts }}</strong><span>文章</span></div>
+                <div class="stat"><strong>{{ stats.categories }}</strong><span>分类</span></div>
+                <div class="stat"><strong>{{ stats.views }}</strong><span>阅读</span></div>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<section class="banner" aria-label="滚动图片横幅">
+    <div class="banner-track">
+        {% for item in banners*4 %}
+        <div class="banner-item" style="background-image: url({{ url_for('home.static',filename='images/banners/'+item.image) }});">
+            <div class="banner-caption">
+                <strong>{{ item.title }}</strong>
+                <span>{{ item.subtitle }}</span>
+            </div>
+
+        </div>
+
+        {% endfor %}
+    </div>
+</section>
+
+<div class="content-grid">
+    <section class="section" id="articles">
+        <div class="section-header">
+            <h2>最新文章</h2>
+            <span class="mini-meta">核心内容 / 推荐阅读</span>
+        </div>
+        <div class="article-list">
+            {% for post in latest_posts %}
+            <article class="article-card">
+                <div class="article-meta">
+                    <span>{{ post.created_at.strftime('%Y-%m-%d') }}</span>
+                    <span>作者：{{ post.author.display_name }}</span>
+                    <span>阅读：{{ post.view_count }}</span>
+                </div>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.summary }}</p>
+                <div class="article-footer">
+                    {% if post.tags %}
+                    <a class="tag" href="javascript:void(0)">{{ post.tags[0].name }}</a>
+                    {% endif %}
+                    <a class="btn" href="{{ url_for('home.post_detail', pid=post.id) }}">阅读全文</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <aside class="sidebar">
+        <section class="panel" id="about">
+            <div class="about-avatar">
+                <img src={{ url_for('home.static', filename='images/' + author_info.user_avatar) }} >
+            </div>
+            <h3>关于本站</h3>
+            <p>{{ sidebar.about_text }}</p>
+        </section>
+
+        <section class="panel">
+            <h3>站点时间线</h3>
+            <div class="timeline">
+                {% for item in sidebar.timeline %}
+                <div class="timeline-item">
+                    <strong>{{ item.period }}</strong>
+                    <div style="color: var(--muted); margin-top: 4px;">{{ item.text }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="panel">
+            <h3>推荐阅读</h3>
+            <div class="timeline">
+                {% for post in featured_posts %}
+                <div class="timeline-item">
+                    <strong>{{ post.title }}</strong>
+                    <div style="color: var(--muted); margin-top: 4px;">{{ post.summary }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </aside>
+</div>
+{% endblock %}

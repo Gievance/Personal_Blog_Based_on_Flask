@@ -1,0 +1,129 @@
+<!-- 文件路径：templates/base.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- block title：子模板可以覆盖页面标题 -->
+    <title>{% block title %} 标题 {% endblock %}</title>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('home.static', filename='images/e122fd3b206bd02d9d7fca94b9b0756f.jpeg') }}">
+    {% block theme %}
+    <link rel="stylesheet" href="{{ url_for('home.static', filename='css/base.css') }}">
+    <script>
+        (function () {
+            const storageKey = 'wnblog-theme';
+            const savedTheme = localStorage.getItem(storageKey) || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <link
+        id="theme-style"
+        rel="stylesheet"
+        href="{{ url_for('home.static', filename='css/dark.css') }}"
+        data-light-href="{{ url_for('home.static', filename='css/light.css') }}"
+        data-dark-href="{{ url_for('home.static', filename='css/dark.css') }}"
+    >
+    <script>
+        (function () {
+            const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const themeLink = document.getElementById('theme-style');
+            if (!themeLink) {
+                return;
+            }
+            themeLink.href = theme === 'light'
+                ? themeLink.dataset.lightHref
+                : themeLink.dataset.darkHref;
+        })();
+    </script>
+    {% endblock %}
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header class="navbar">
+        <a href="{{ url_for('home.index') }}" class="logo">
+            <img
+                class="logo-icon"
+                src="{{ url_for('home.static', filename='images/e122fd3b206bd02d9d7fca94b9b0756f.jpeg') }}"
+                alt="WNBlog logo"
+            >
+            <span>{% block head_title%} RUNOOB 博客（Flask）{% endblock %}</span>
+        </a>
+        <div class="navbar-right">
+            <nav>
+                <a href="{{url_for('home.index')}}">首页</a>
+                <a href="#articles">文章</a>
+                <a href="{{url_for('home.about')}}">关于</a>
+            </nav>
+            <button class="theme-toggle-nav" type="button" id="theme-toggle">切换白天</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- block content：子模板在此处填入页面主体内容 -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <section class="footer-section">
+                <h3>关于博客</h3>
+                <p>WNBlog 是一个基于 Flask 的个人博客示例站点，用于展示文章内容、主题切换效果与自定义首页设计。</p>
+            </section>
+            <section class="footer-section">
+                <h3>站点导航</h3>
+                <ul>
+                    <li><a href="{{url_for('home.index')}}">首页</a></li>
+                    <li><a href="#articles">最新文章</a></li>
+                    <li><a href="#about">关于本站</a></li>
+                </ul>
+            </section>
+            <section class="footer-section">
+                <h3>站点信息</h3>
+                <ul>
+                    <li>作者：Woson</li>
+                    <li>技术栈：Flask / Jinja2 / CSS</li>
+                    <li>更新频率：持续完善中</li>
+                </ul>
+            </section>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 WNBlog. All rights reserved.</span>
+            <span>Powered by Flask · Designed for day & night themes</span>
+        </div>
+    </footer>
+    <script>
+        (function () {
+            const storageKey = 'wnblog-theme';
+            const button = document.getElementById('theme-toggle');
+            const link = document.getElementById('theme-style');
+            const body = document.body;
+            const root = document.documentElement;
+
+            if (!button || !link) {
+                return;
+            }
+
+            function applyTheme(theme) {
+                const isLight = theme === 'light';
+                body.classList.remove('theme-light', 'theme-dark');
+                body.classList.add(isLight ? 'theme-light' : 'theme-dark');
+                root.setAttribute('data-theme', theme);
+                link.href = isLight
+                    ? link.dataset.lightHref
+                    : link.dataset.darkHref;
+                button.textContent = isLight ? '切换黑夜' : '切换白天';
+            }
+
+            const savedTheme = localStorage.getItem(storageKey) || root.getAttribute('data-theme') || 'dark';
+            applyTheme(savedTheme);
+
+            button.addEventListener('click', function () {
+                const nextTheme = body.classList.contains('theme-light') ? 'dark' : 'light';
+                localStorage.setItem(storageKey, nextTheme);
+                applyTheme(nextTheme);
+            });
+        })();
+    </script>
+</body>
+</html>

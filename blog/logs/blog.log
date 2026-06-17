@@ -1,0 +1,285 @@
+2026-06-17 09:38:35,392 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:48:36,215 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:48:37,306 ERROR: Exception on / [GET] [in E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: user.user_avatar
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\views.py", line 10, in index
+    payload = get_homepage_payload()
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\services.py", line 60, in get_homepage_payload
+    author_info = User.query.filter_by(username="admin").first()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.user_avatar
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.display_name AS user_display_name, user.email AS user_email, user.bio AS user_bio, user.user_avatar AS user_user_avatar, user.created_at AS user_created_at, user.updated_at AS user_updated_at 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('admin', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-17 09:51:17,152 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:51:18,244 ERROR: Exception on / [GET] [in E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: user.user_avatar
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\views.py", line 10, in index
+    payload = get_homepage_payload()
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\services.py", line 60, in get_homepage_payload
+    author_info = User.query.filter_by(username="admin").first()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.user_avatar
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.display_name AS user_display_name, user.email AS user_email, user.bio AS user_bio, user.user_avatar AS user_user_avatar, user.created_at AS user_created_at, user.updated_at AS user_updated_at 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('admin', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-06-17 09:52:23,082 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:55:45,182 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:55:54,858 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:56:48,207 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:57:18,387 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:58:35,774 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:59:06,247 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:59:19,037 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 09:59:53,800 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:01:14,138 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:03:29,175 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:03:36,211 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:08:08,624 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:08:09,359 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:08:40,381 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:09:51,956 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:17:01,957 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:17:39,186 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:19:16,454 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:22:11,696 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:22:39,517 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:24:25,369 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:26:06,709 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:28:50,528 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:30:13,596 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:36:44,019 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:45:43,045 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:45:44,673 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:45:45,607 ERROR: Exception on / [GET] [in E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\views.py", line 13, in index
+    return render_template("home.html", page_title=page_title, **payload)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\base.html", line 63, in top-level template code
+    {% block content %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 82, in block 'content'
+    <img src={{ url_for('home.static', filename='images/' + author_info.user_avatar) }} >
+jinja2.exceptions.UndefinedError: 'None' has no attribute 'user_avatar'
+2026-06-17 10:45:54,969 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:45:59,004 ERROR: Exception on / [GET] [in E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\views.py", line 13, in index
+    return render_template("home.html", page_title=page_title, **payload)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\base.html", line 63, in top-level template code
+    {% block content %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 82, in block 'content'
+    <img src={{ url_for('home.static', filename='images/' + author_info.user_avatar) }} >
+jinja2.exceptions.UndefinedError: 'None' has no attribute 'user_avatar'
+2026-06-17 10:46:06,649 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:46:08,721 ERROR: Exception on / [GET] [in E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\views.py", line 13, in index
+    return render_template("home.html", page_title=page_title, **payload)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\base.html", line 63, in top-level template code
+    {% block content %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 82, in block 'content'
+    <img src={{ url_for('home.static', filename='images/' + author_info.user_avatar) }} >
+jinja2.exceptions.UndefinedError: 'None' has no attribute 'user_avatar'
+2026-06-17 10:47:14,361 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:48:44,947 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:48:51,138 ERROR: Exception on / [GET] [in E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\views.py", line 13, in index
+    return render_template("home.html", page_title=page_title, **payload)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\base.html", line 63, in top-level template code
+    {% block content %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 82, in block 'content'
+    <img src={{ url_for('home.static', filename='images/' + author_info.user_avatar) }} >
+jinja2.exceptions.UndefinedError: 'None' has no attribute 'user_avatar'
+2026-06-17 10:48:51,139 ERROR: Exception on / [GET] [in E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\views.py", line 13, in index
+    return render_template("home.html", page_title=page_title, **payload)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "E:\PythonProj\PythonProject\WNBlog\.venv\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\base.html", line 63, in top-level template code
+    {% block content %}
+  File "E:\PythonProj\PythonProject\WNBlog\blog\home\templates\home.html", line 82, in block 'content'
+    <img src={{ url_for('home.static', filename='images/' + author_info.user_avatar) }} >
+jinja2.exceptions.UndefinedError: 'None' has no attribute 'user_avatar'
+2026-06-17 10:49:01,375 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:49:31,442 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]
+2026-06-17 10:50:36,783 INFO: 开启WNBlog项目！ [in E:\PythonProj\PythonProject\WNBlog\blog\__init__.py:47]

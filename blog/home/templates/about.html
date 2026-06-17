@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}关于 WNBlog{% endblock %}
+{% block head_title %}WNBlog · 网站介绍{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('home.static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="about-page">
+    <section class="about-hero">
+        <div class="hero-copy">
+            <span class="eyebrow">ABOUT WNBLOG</span>
+            <h1>一个融合动漫质感与技术表达的个人博客实验场</h1>
+            <p>
+                WNBlog 聚焦 Flask 博客系统的搭建过程，将内容发布、页面设计、主题切换与个人创作记录整合到同一个站点中。
+                它既是博客，也是持续迭代的作品集与练习场。
+            </p>
+            <div class="hero-actions">
+                <a class="about-btn primary" href="{{ url_for('home.index') }}">进入首页</a>
+                <a class="about-btn" href="#story">了解更多</a>
+            </div>
+        </div>
+        <aside class="hero-panel">
+            <h2>核心特性</h2>
+            <ul class="feature-list">
+                <li>深浅双主题切换，延续统一视觉语言</li>
+                <li>基于 Flask 蓝图与 Jinja2 的页面组织方式</li>
+                <li>面向文章、分类、作者信息的结构化数据设计</li>
+                <li>强调“技术实现 + 个人表达”并重的内容方向</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section class="about-section" id="story">
+        <div class="section-heading">
+            <span>项目缘起</span>
+            <h2>从静态首页到完整博客应用</h2>
+        </div>
+        <div class="story-grid">
+            <article class="story-card">
+                <h3>视觉起点</h3>
+                <p>项目最初从首页风格探索开始，希望在常见博客布局中融入未来感界面、动漫式氛围与更强的个人辨识度。</p>
+            </article>
+            <article class="story-card">
+                <h3>工程化演进</h3>
+                <p>随着页面成型，逐步引入应用工厂、蓝图、数据模型和种子数据，让示意页过渡为可运行、可迭代的 Flask 项目。</p>
+            </article>
+            <article class="story-card">
+                <h3>内容导向</h3>
+                <p>站点未来将围绕开发记录、设计思路、动漫题材灵感与个人项目复盘持续沉淀，形成稳定的创作输出空间。</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="about-section" id="stack">
+        <div class="section-heading">
+            <span>技术结构</span>
+            <h2>当前站点采用的主要技术栈</h2>
+        </div>
+        <div class="stack-grid">
+            <article class="stack-card">
+                <strong>Flask</strong>
+                <p>负责应用工厂、蓝图注册、路由分发与整体服务入口。</p>
+            </article>
+            <article class="stack-card">
+                <strong>SQLAlchemy</strong>
+                <p>承担文章、用户、分类、标签与站点配置等数据模型管理。</p>
+            </article>
+            <article class="stack-card">
+                <strong>Jinja2</strong>
+                <p>用于首页、详情页及后台表单等服务端模板渲染。</p>
+            </article>
+            <article class="stack-card">
+                <strong>CSS 主题系统</strong>
+                <p>通过基础变量与亮暗主题样式文件组合，保持页面风格一致且易于扩展。</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="about-section roadmap" id="plan">
+        <div class="section-heading">
+            <span>后续计划</span>
+            <h2>下一阶段准备完善的方向</h2>
+        </div>
+        <div class="roadmap-list">
+            <div class="roadmap-item">
+                <span class="step">01</span>
+                <div>
+                    <h3>补齐内容链路</h3>
+                    <p>完善文章详情、文章创建、分类浏览与推荐阅读体验。</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <span class="step">02</span>
+                <div>
+                    <h3>扩展后台管理</h3>
+                    <p>逐步加入文章编辑、配置管理、封面资源维护与基础权限控制。</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <span class="step">03</span>
+                <div>
+                    <h3>沉淀长期内容</h3>
+                    <p>持续发布项目开发记录、动漫风设计尝试与技术复盘文章。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('home.static', filename='css/home.css') }}">
+{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="section-header">
+        <div>
+            <h2>新建文章</h2>
+            <span class="mini-meta">后台写作入口 / MVP</span>
+        </div>
+        <a class="btn" href="{{ url_for('home.index') }}">返回首页</a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="timeline" style="margin-bottom: 20px;">
+                {% for category, message in messages %}
+                <div class="panel">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" class="timeline">
+        <div class="panel">
+            <label for="title">标题</label>
+            <input id="title" name="title" type="text" style="width:100%;margin-top:8px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel-strong);color:var(--text);">
+        </div>
+        <div class="panel">
+            <label for="summary">摘要</label>
+            <textarea id="summary" name="summary" rows="4" style="width:100%;margin-top:8px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel-strong);color:var(--text);"></textarea>
+        </div>
+        <div class="panel">
+            <label for="content">正文</label>
+            <textarea id="content" name="content" rows="12" style="width:100%;margin-top:8px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel-strong);color:var(--text);"></textarea>
+        </div>
+        <div class="panel">
+            <label for="cover_image">封面图 URL</label>
+            <input id="cover_image" name="cover_image" type="text" style="width:100%;margin-top:8px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel-strong);color:var(--text);">
+        </div>
+        <div class="panel">
+            <label for="category_id">分类</label>
+            <select id="category_id" name="category_id" style="width:100%;margin-top:8px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel-strong);color:var(--text);">
+                <option value="">请选择分类</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="panel">
+            <label><input type="checkbox" name="is_featured"> 设为推荐文章</label>
+        </div>
+        <div class="hero-actions">
+            <button class="btn primary" type="submit">发布文章</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

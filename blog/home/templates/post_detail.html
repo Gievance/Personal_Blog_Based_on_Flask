@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('home.static', filename='css/home.css') }}">
+{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="section-header">
+        <div>
+            <h2>{{ post.title }}</h2>
+            <div class="mini-meta">
+                <span>{{ post.created_at.strftime('%Y-%m-%d') }}</span>
+                <span>作者：{{ post.author.display_name }}</span>
+                <span>分类：{{ post.category.name }}</span>
+                <span>阅读：{{ post.view_count }}</span>
+            </div>
+        </div>
+        <a class="btn" href="{{ url_for('home.index') }}">返回首页</a>
+    </div>
+    {% if post.cover_image %}
+    <div class="banner" style="margin-top: 0;">
+        <div class="banner-item" style="height: 280px; background-image: url('{{ post.cover_image }}');">
+            <div class="banner-caption">
+                <strong>{{ post.title }}</strong>
+                <span>{{ post.summary }}</span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="panel" style="margin-top: 24px;">
+        <p>{{ post.summary }}</p>
+    </div>
+    <article class="section" style="margin-top: 24px;">
+        {{ post.content|safe }}
+    </article>
+    {% if post.tags %}
+    <div class="hero-actions" style="margin-top: 20px;">
+        {% for tag in post.tags %}
+        <span class="tag">{{ tag.name }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,232 @@
+.about-page {
+    display: grid;
+    gap: 32px;
+}
+
+.about-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.9fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.hero-copy,
+.hero-panel,
+.story-card,
+.stack-card,
+.roadmap-item {
+    background: var(--panel-bg);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.hero-copy {
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    background:
+        linear-gradient(135deg, rgba(85, 215, 255, 0.14), rgba(139, 123, 255, 0.08)),
+        var(--hero-overlay);
+}
+
+.hero-copy::before,
+.hero-copy::after {
+    content: "";
+    position: absolute;
+    inset: auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+.hero-copy::before {
+    top: -72px;
+    right: -54px;
+    background: var(--hero-glow-1);
+}
+
+.hero-copy::after {
+    bottom: -98px;
+    left: -34px;
+    background: var(--hero-glow-2);
+}
+
+.eyebrow {
+    display: inline-flex;
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--cyan);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+}
+
+.hero-copy h1 {
+    font-size: clamp(2.3rem, 4vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.hero-copy p,
+.hero-panel li,
+.story-card p,
+.stack-card p,
+.roadmap-item p {
+    color: var(--muted);
+    line-height: 1.85;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.about-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 132px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1px solid var(--button-border);
+    color: var(--button-text);
+    text-decoration: none;
+    background: var(--button-bg);
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.about-btn:hover {
+    transform: translateY(-2px);
+}
+
+.about-btn.primary {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    color: #08111f;
+    font-weight: 700;
+}
+
+.hero-panel {
+    padding: 32px 28px;
+}
+
+.hero-panel h2,
+.section-heading h2 {
+    margin-bottom: 14px;
+}
+
+.feature-list {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 18px;
+}
+
+.feature-list li::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+}
+
+.about-section {
+    display: grid;
+    gap: 18px;
+}
+
+.section-heading span {
+    color: var(--cyan);
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+}
+
+.story-grid,
+.stack-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.story-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stack-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.story-card,
+.stack-card {
+    padding: 24px;
+}
+
+.story-card h3,
+.stack-card strong,
+.roadmap-item h3 {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.roadmap-list {
+    display: grid;
+    gap: 18px;
+}
+
+.roadmap-item {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px 24px;
+    align-items: start;
+}
+
+.step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    color: #08111f;
+    font-weight: 800;
+}
+
+@media (max-width: 960px) {
+    .about-hero,
+    .story-grid,
+    .stack-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-copy,
+    .hero-panel,
+    .story-card,
+    .stack-card,
+    .roadmap-item {
+        padding: 20px;
+    }
+
+    .roadmap-item {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-copy h1 {
+        font-size: 2rem;
+    }
+}
