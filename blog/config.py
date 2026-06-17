@@ -4,7 +4,11 @@ from urllib.parse import quote_plus
 DEBUG = False
 SECRET_KEY = os.getenv("FLASK_SECRET_KEY", "abcdefg")
 
-
+MYSQL_USERNAME = os.getenv("MYSQL_USERNAME")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+MYSQL_HOST = os.getenv("MYSQL_HOST")
+MYSQL_PORT = int(os.getenv("MYSQL_PORT"))
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
 
 MYSQL_USERNAME_ENCODED = quote_plus(MYSQL_USERNAME)
 MYSQL_PASSWORD_ENCODED = quote_plus(MYSQL_PASSWORD)
